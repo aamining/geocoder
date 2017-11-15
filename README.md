@@ -1,24 +1,30 @@
-# README
+# geocoder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1-
 
-Things you may want to cover:
+```
+gem 'geocoder'
 
-* Ruby version
+```
+2- A collection of useful Rails generator scripts for scaffolding, layout files, authentication, and more.
 
-* System dependencies
+```
+gem "nifty-generators"
 
-* Configuration
+```
+3- creating a model called location and then rake db:migrate
 
-* Database creation
+```
+rails g scaffold location address:string latitude:float longitude:float
 
-* Database initialization
+```
 
-* How to run the test suite
+4- in models>location.rb
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+geocoded_by :address
+after_validation :geocode, :if => :address_changed?
 
-* Deployment instructions
+```
 
-* ...
+5- in url and location field if enter an address it will return Longitude and latitude.
